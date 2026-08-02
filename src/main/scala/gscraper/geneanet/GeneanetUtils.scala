@@ -50,10 +50,10 @@ object GeneanetUtils {
 
     val columnElement = (doc >> element("h2 > span")).parent.get.parent.get
 
-    val sex = personGeneralElement >> attr("title")("img") match {
-      case "H" => SexMale
-      case "F" => SexFemale
-      case "?" => SexUnknown
+    val sex = (personGeneralElement >?> attr("alt")("img")) match {
+      case Some("Homme") => SexMale
+      case Some("Femme") => SexFemale
+      case _ => SexUnknown
     }
 
     val (name: String, surname: String) = (personGeneralElement >> elementList("a:not(.edit-button-action)")).map(_.text) match {

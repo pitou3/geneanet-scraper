@@ -21,7 +21,7 @@ L'auteur ne pourrait en aucun cas être tenu responsable des potentiels problèm
 
 ## Configuration
 
-Toute la configuration se fait actuellement en modifiant directement [`Main.scala`](src/main/scala/gscraper/Main.scala) avant de lancer le projet :
+La configuration (secrets compris) se fait dans `src/main/scala/gscraper/LocalConfig.scala`, un fichier ignoré par git (voir [`.gitignore`](.gitignore)) pour éviter de commiter accidentellement ton cookie de session. Ce fichier n'existe pas au premier clone : copie [`LocalConfig.scala.example`](src/main/scala/gscraper/LocalConfig.scala.example) vers `LocalConfig.scala` puis remplis-le :
 
 ```scala
 val cookieValue = ""   // Cookie de session Geneanet (voir ci-dessous)

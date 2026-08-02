@@ -2,3 +2,4 @@
 *.iml
 target
 *.ged
+src/main/scala/gscraper/LocalConfig.scala

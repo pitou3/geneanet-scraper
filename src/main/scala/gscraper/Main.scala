@@ -1,12 +1,9 @@
 package gscraper
 
 import gscraper.actor.GeneanetScraper
+import gscraper.LocalConfig._
 
 object Main extends App {
-
-  val cookieValue = ""
-  val userAgent = ""
-  val url = ""
 
   assert(url.contains("lang=fr"), "The initial URL must use the French locale")
 

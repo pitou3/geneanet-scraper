@@ -1,0 +1,9 @@
+package gscraper
+
+object LocalConfig {
+
+  val cookieValue = ""
+  val userAgent = ""
+  val url = ""
+
+}
