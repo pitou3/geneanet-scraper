@@ -92,7 +92,7 @@ class ActorDataManager(scraper: GeneanetScraper) extends Actor {
       scraper.callback(tree)
 
       println("Job done. Exiting.")
-      System.exit(0) // TODO
+      scraper.system.terminate()
     }
   }
 

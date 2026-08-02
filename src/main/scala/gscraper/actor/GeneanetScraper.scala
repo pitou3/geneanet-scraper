@@ -19,9 +19,9 @@ class GeneanetScraper private(bootstrapUrl: String, cookieValue: String, userAge
       .header("Cookie", cookieValue)
       .header("User-Agent", userAgent)
 
-  private val system = ActorSystem()
+  private[actor] val system: ActorSystem = ActorSystem()
 
-  private[actor] val scraperRouter: ActorRef = system.actorOf(Props(classOf[ActorScrape], this).withRouter(RoundRobinPool(nrOfInstances = 1)), name = "router")
+  private[actor] val scraperRouter: ActorRef = system.actorOf(RoundRobinPool(1).props(Props(classOf[ActorScrape], this)), name = "router")
   private[actor] val dataKeeper: ActorRef = system.actorOf(Props(classOf[ActorDataManager], this))
 
   dataKeeper ! ScrapingRequest(bootstrapUrl, "")
