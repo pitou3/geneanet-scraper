@@ -53,6 +53,12 @@ Pendant le scraping, chaque personne visitée porte un chemin de relation constr
 sbt run
 ```
 
-Le scraping démarre depuis `url`, explore récursivement parents, enfants et conjoints selon `pathMatcher`, puis écrit le résultat au format GEDCOM dans `test5.ged` à la racine du projet (nom de fichier actuellement fixé dans `Main.scala`).
+Le scraping démarre depuis `url`, explore récursivement parents, enfants et conjoints selon `pathMatcher`, puis écrit le résultat au format GEDCOM à la racine du projet, dans un fichier nommé automatiquement :
+
+```
+<identifiant_arbre>_<prenom>_<nom>_<horodatage>.ged
+```
+
+par exemple `domino1774_Jeannette_DE_BEVY_de_LA_FAVERGES_20260802_114800.ged`. Le prénom/nom viennent de la personne de départ telle qu'extraite de la fiche (pas de l'URL), l'horodatage est au format `yyyyMMdd_HHmmss`. Si le scraping échoue avant d'avoir récupéré cette personne, le fichier (contenant alors juste l'en-tête GEDCOM) est nommé avec `vide` à la place du prénom/nom.
 
 La progression est affichée sur la sortie standard : `[I: <individus>, F: <familles>, I': <requêtes en cours>] Received <url>`. En cas d'erreur (page bloquée par le pare-feu Geneanet, page inattendue, etc.), le scraping s'arrête et la trace de l'exception est affichée.
